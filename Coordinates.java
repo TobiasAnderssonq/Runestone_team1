@@ -8,4 +8,8 @@ public class Coordinates {
 		this.y = y;
 		this.z = z;
 	}
+	
+	public static boolean compareCoordinates(Coordinates coord1, Coordinates coord2) {
+		return coord1.x == coord2.x && coord1.y == coord2.y && coord1.z == coord2.z;
+	}
 }
