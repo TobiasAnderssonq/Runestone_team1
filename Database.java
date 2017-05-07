@@ -45,8 +45,12 @@ public class Database {
 	 * @return	The coordinates in the Shelf object.
 	 */
 	public Coordinates getPackageLocation(String packageName) {
+		for(int i = 0; i < list.size(); i++) {
+			if(list.get(i).getPackage().getPackageName() == packageName) {
+				return list.get(i).getCoordinates();
+			}
+		}
 		return null;
-		//TOOD
 	}
 	
 	/**
@@ -56,8 +60,12 @@ public class Database {
 	 * @return	The coordinates in the Shelf object.
 	 */
 	public Coordinates getPackageLocation(int packageID) {
+		for(int i = 0; i < list.size(); i++) {
+			if(list.get(i).getPackage().getPackageID() == packageID) {
+				return list.get(i).getCoordinates();
+			}
+		}
 		return null;
-		//TODO
 	}
 	
 	
@@ -83,7 +91,7 @@ public class Database {
 	}
 	
 	/**
-	 * Prints the current database in the form "Package - Coordinates"
+	 * Prints the current database on the form "Package - Coordinates"
 	 */
 	public void printDB() {
 		for(int i = 0; i < list.size(); i++) {
