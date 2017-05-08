@@ -3,9 +3,7 @@ import lejos.hardware.motor.Motor;
 import lejos.utility.Delay;
 
 /**
- * This is a basic leJOS program
- * @author Shea Bunge
- *
+ * Test
  */
 public class HelloWorld {
 
