@@ -17,7 +17,7 @@ public class SocketClient {
 	
 		//Test msg from laptop
 		try {
-			System.out.println(in.readUTF());
+			System.out.println(in.readChar());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println("Did not receive message from server");
