@@ -2,13 +2,14 @@ import java.io.IOException;
 import java.util.Vector;
 import javax.bluetooth.*;
 
-public class FindBluetoothDevices {
+public class BluetoothDeviceFinder {
 
 	public static final Vector/*<RemoteDevice>*/ devicesDiscovered = new Vector();
 
-    public static void main(String[] args) throws IOException, InterruptedException {
-
-        final Object inquiryCompletedEvent = new Object();
+   
+    public Vector findDevices() throws IOException, InterruptedException{
+        
+    	final Object inquiryCompletedEvent = new Object();
 
         devicesDiscovered.clear();
 
@@ -18,13 +19,12 @@ public class FindBluetoothDevices {
                 System.out.println("Device " + btDevice.getBluetoothAddress() + " found");
                 devicesDiscovered.addElement(btDevice);
                 try {
-                    System.out.println("     name " + btDevice.getFriendlyName(false));
+                    System.out.println("name: " + btDevice.getFriendlyName(false));
                 } catch (IOException cantGetDeviceName) {
                 }
             }
 
             public void inquiryCompleted(int discType) {
-                System.out.println("Device Inquiry completed!");
                 synchronized(inquiryCompletedEvent){
                     inquiryCompletedEvent.notifyAll();
                 }
@@ -40,11 +40,11 @@ public class FindBluetoothDevices {
         synchronized(inquiryCompletedEvent) {
             boolean started = LocalDevice.getLocalDevice().getDiscoveryAgent().startInquiry(DiscoveryAgent.GIAC, listener);
             if (started) {
-                System.out.println("wait for device inquiry to complete...");
                 inquiryCompletedEvent.wait();
-                System.out.println(devicesDiscovered.size() +  " device(s) found");
+                return devicesDiscovered;       
             }
         }
+		return devicesDiscovered;
     }
 
 }
