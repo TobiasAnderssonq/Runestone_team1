@@ -3,7 +3,7 @@ import lejos.hardware.motor.Motor;
 import lejos.utility.Delay;
 
 /**
- * Test
+ * Test commit
  */
 public class HelloWorld {
 
