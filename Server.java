@@ -1,8 +1,25 @@
 
 public class Server {
+	
+	public Server() {
+		
+	}
+	
+	private void connectToDevice() {
+		
+	}
+	
+	private void updateDatabase() {
+		
+	}
+	
+	private void sendInstruction () {
+		
+	}
+	
 	public static void main(String [ ] args) {
 		
-	
+		
 		
 		//Test code for the database
 		Database db = new Database(); 
