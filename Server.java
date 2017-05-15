@@ -1,22 +1,20 @@
-import java.io.IOException;
+import java.io.*;
 import java.util.Vector;
 
 public class Server {
-	public static void main(String [ ] args) {
+	public static void main(String [ ] args) throws IOException {
 		
-		BluetoothDeviceFinder finder = new BluetoothDeviceFinder();
-		
-		Vector vect = new Vector();
-		try {
-			vect = finder.findDevices();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+	
+		//Vector vect = new Vector();
+		commTest com = new commTest();
+		com.searchForPorts();
+		com.connect();
+		com.initIOStream();
+		com.initListener();
+		//com.writeData();
+		//com.disconnect();
+	
+
 		//Test code for the database
 		/*Database db = new Database(); 
 		db.populateDatabase(2, 6, 3);
